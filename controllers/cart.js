@@ -31,3 +31,16 @@ exports.postProductInCart=(req,res,next)=>{
     .then(res=>console.log(res))
     .catch(err => console.log(err));
 }
+
+
+exports.getCartProducts=(req,res,next)=>{
+  req.user
+  .getCart()
+  .then(cart=>{
+    return cart
+      .getProducts()
+      .then(result=>res.json(result))
+      .catch(err => console.log(err));
+  })
+  .catch(err => console.log(err));
+}
