@@ -48,6 +48,11 @@ Cart.belongsTo(User);
 Cart.belongsToMany(Product,{through:CartItem});
 Product.belongsToMany(Cart,{through:CartItem});
 
+// orders association
+Order.belongsTo(User);
+User.hasMany(Order);
+
+// Order.belongsToMany(CartItem,{through})
 
 sequelize
   // .sync({ force: true })
