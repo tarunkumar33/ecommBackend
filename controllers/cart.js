@@ -34,13 +34,25 @@ exports.postProductInCart=(req,res,next)=>{
 
 
 exports.getCartProducts=(req,res,next)=>{
-  req.user
-  .getCart()
-  .then(cart=>{
-    return cart
-      .getProducts()
-      .then(result=>res.json(result))
-      .catch(err => console.log(err));
-  })
-  .catch(err => console.log(err));
+  // req.user
+  // .getCart()
+  // .then(cart=>{
+  //   return cart
+  //     .getProducts()
+  //     .then(result=>res.json(result))
+  //     .catch(err => console.log(err));
+  // })
+  // .catch(err => console.log(err));
+
+  async function getCartProductsAsync(){
+    try{
+      let cart=await req.user.getCart();
+      let products=await cart.getProducts();
+      res.json(products);
+    }
+    catch(err){
+      console.log(err);
+    }
+  }
+  getCartProductsAsync();
 }
