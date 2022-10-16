@@ -8,6 +8,7 @@ const router=express.Router();
 router.post('/cart',cartControllers.postProductInCart);
 router.get('/cart',cartControllers.getCartProducts);
 router.get('/create-order',orderControllers.createOrder);
+router.get('/orders',orderControllers.getOrders);
 
 
 module.exports=router;

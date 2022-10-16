@@ -28,7 +28,7 @@ exports.postProductInCart=(req,res,next)=>{
         through: { quantity: newQuantity }
       });
     })
-    .then(res=>console.log(res))
+    .then(result=>res.json({success:'true',desc:"added to cart successfully"}))
     .catch(err => console.log(err));
 }
 

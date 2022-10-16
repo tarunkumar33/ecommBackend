@@ -1,3 +1,5 @@
+const productsModel=require('../models/product');
+
 exports.createOrder=(req,res,next)=>{
     async function createOrderAsync(){
         try{
@@ -18,4 +20,22 @@ exports.createOrder=(req,res,next)=>{
         }
     }
     createOrderAsync();
+}
+
+exports.getOrders=(req,res,next)=>{
+    async function getOrdersAsync(){
+        try{
+            //eagar loading joins
+            //for each order order.getProducts()
+            //include product model
+            let orders=await req.user.getOrders({include:productsModel});
+
+            console.log('hi..............',orders);
+            res.json(orders);
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+    getOrdersAsync();
 }
