@@ -48,6 +48,7 @@ exports.getCartProducts=(req,res,next)=>{
     try{
       let cart=await req.user.getCart();
       let products=await cart.getProducts();
+      // console.log("hi.....................",cart);
       res.json(products);
     }
     catch(err){
